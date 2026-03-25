@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e80aed2c-f9d9-4f60-b631-aa143f2ce862" name="Changes" comment="" />
+    <list default="true" id="e80aed2c-f9d9-4f60-b631-aa143f2ce862" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/selenium-mock-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/automation/utils/ExtentManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/automation/utils/ExtentTestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/automation/utils/TestListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/ci.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/common.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,30 +28,37 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="6" />
+    <option name="cachedIndexableFilesCount" value="12" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "hwamin2101"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hwamin2101&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/hwamin2101/selenium-mock-project.git",
-    "accountId": "d98c73d2-67f1-48bb-961b-0bb187eaaff8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hwamin2101/selenium-mock-project.git&quot;,
+    &quot;accountId&quot;: &quot;d98c73d2-67f1-48bb-961b-0bb187eaaff8&quot;
   }
-}]]></component>
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3BDMQfi94dNnvL8OzDwrEakfcpI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -51,15 +70,27 @@
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "master",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/ThanhLam/Selenium/selenium-mock-project/src/test/java/com/automation/tests",
     "onboarding.tips.debug.path": "D:/docs for train/selenium/Selenium-mock-prj/src/main/java/org/example/Main.java"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ThanhLam\Selenium\selenium-mock-project\src\test\java\com\automation\tests" />
+      <recent name="D:\ThanhLam\Selenium\selenium-mock-project\src\test\java\com\automation\utils" />
+      <recent name="D:\ThanhLam\Selenium\selenium-mock-project\src\main\java\com\automation\utils" />
+      <recent name="D:\ThanhLam\Selenium\selenium-mock-project\src\test\resources" />
+      <recent name="D:\ThanhLam\Selenium\selenium-mock-project\src\main\java\com\automation\pages" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
       </set>
     </attachedChunks>
   </component>
