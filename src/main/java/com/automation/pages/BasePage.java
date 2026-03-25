@@ -24,6 +24,7 @@ public class BasePage {
     protected WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
+
     protected void waitForVisible(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
@@ -50,7 +51,9 @@ public class BasePage {
                 element.click();
                 break;
             } catch (org.openqa.selenium.StaleElementReferenceException e) {
-                if (i == 1) throw e;
+                if (i == 1) {
+                    throw e;
+                }
             } catch (Exception e) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
                 break;
