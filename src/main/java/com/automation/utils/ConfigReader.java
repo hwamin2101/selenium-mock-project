@@ -29,6 +29,7 @@ public class ConfigReader {
             }
 
             prop.get().load(inp);
+            System.out.println("Loading file: " + path + " => " + inp);
 
         } catch (Exception e) {
             throw new RuntimeException("Failed to load " + path, e);

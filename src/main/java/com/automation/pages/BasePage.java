@@ -25,12 +25,16 @@ public class BasePage {
         return driver.findElement(locator);
     }
 
-    protected void waitForVisible(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
+    protected List<WebElement> findElements(By locator) {
+        return driver.findElements(locator);
     }
 
-    protected void waitForClickable(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+    protected void waitForVisible(By locator) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    protected void waitForClickable(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     protected void waitForListNotEmpty(List<WebElement> elements) {
@@ -43,52 +47,44 @@ public class BasePage {
 //        element.click();
 //    }
 
-    protected void click(WebElement element) {
-        for (int i = 0; i < 2; i++) {
-            try {
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-                waitForClickable(element);
-                element.click();
-                break;
-            } catch (org.openqa.selenium.StaleElementReferenceException e) {
-                if (i == 1) {
-                    throw e;
-                }
-            } catch (Exception e) {
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-                break;
-            }
-        }
+    protected void click(By locator) {
+        scrollToElement(locator);
+        waitForClickable(locator);
+        findElement(locator).click();
     }
 
-    protected void sendKeys(WebElement element, String text) {
-        waitForVisible(element);
+    protected void sendKeys(By locator, String text) {
+        waitForVisible(locator);
+        WebElement element = findElement(locator);
         element.clear();
         element.sendKeys(text);
     }
 
-    protected String getText(WebElement element) {
-        wait.until(d -> {
-            String text = element.getText();
-            return text != null && !text.trim().isEmpty();
-        });
-        return element.getText();
+    protected String getText(By locator) {
+        waitForVisible(locator);
+        return findElement(locator).getText();
     }
 
-    protected String getValue(WebElement element) {
-        waitForVisible(element);
-        return element.getAttribute("value");
+    protected String getValue(By locator) {
+        waitForVisible(locator);
+        return findElement(locator).getAttribute("value");
     }
 
-    protected boolean isDisplayed(WebElement element) {
+    protected boolean isDisplayed(By locator) {
         try {
-            return element.isDisplayed();
+            return findElement(locator).isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
 
-    protected String getAttribute(WebElement element, String name) {
-        return element.getAttribute(name);
+    protected String getAttribute(By locator, String name) {
+        return findElement(locator).getAttribute(name);
+    }
+
+    protected void scrollToElement(By locator) {
+        waitForVisible(locator);
+        WebElement element = findElement(locator);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }

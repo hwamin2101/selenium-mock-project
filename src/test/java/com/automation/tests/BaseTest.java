@@ -1,5 +1,7 @@
 package com.automation.tests;
 
+import com.automation.component.NavBar;
+import com.automation.pages.LoginPage;
 import com.automation.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -10,6 +12,7 @@ import com.automation.utils.ConfigReader;
 
 public class BaseTest {
     protected WebDriver driver;
+    protected NavBar navBar;
 
     @BeforeClass(alwaysRun = true)
     @Parameters("isCI")
@@ -18,6 +21,9 @@ public class BaseTest {
 
         ConfigReader.loadConfig(isCI);
         driver = DriverManager.initDriver();
+
+        // Login
+        navBar = new LoginPage(driver).gotoLoginPage().login();
     }
 
     public WebDriver getDriver() {
