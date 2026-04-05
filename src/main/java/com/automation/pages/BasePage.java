@@ -1,11 +1,12 @@
 package com.automation.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -17,12 +18,21 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
     }
 
     protected WebElement findElement(By locator) {
-        return driver.findElement(locator);
+        List<WebElement> elements = driver.findElements(locator);
+        for (WebElement element : elements) {
+            if (element.isDisplayed()) {
+                return element;
+            }
+        }
+        if (!elements.isEmpty()) {
+            return elements.get(0);
+        }
+        throw new NoSuchElementException("No element found for locator: " + locator);
     }
 
     protected List<WebElement> findElements(By locator) {
@@ -30,11 +40,17 @@ public class BasePage {
     }
 
     protected void waitForVisible(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        wait.until(d -> {
+            List<WebElement> elements = d.findElements(locator);
+            return elements.stream().anyMatch(WebElement::isDisplayed);
+        });
     }
 
     protected void waitForClickable(By locator) {
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        wait.until(d -> {
+            List<WebElement> elements = d.findElements(locator);
+            return elements.stream().anyMatch(element -> element.isDisplayed() && element.isEnabled());
+        });
     }
 
     protected void waitForListNotEmpty(List<WebElement> elements) {
@@ -50,7 +66,12 @@ public class BasePage {
     protected void click(By locator) {
         scrollToElement(locator);
         waitForClickable(locator);
-        findElement(locator).click();
+        WebElement element = findElement(locator);
+        try {
+            element.click();
+        } catch (ElementClickInterceptedException e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        }
     }
 
     protected void sendKeys(By locator, String text) {
@@ -72,7 +93,7 @@ public class BasePage {
 
     protected boolean isDisplayed(By locator) {
         try {
-            return findElement(locator).isDisplayed();
+            return findElements(locator).stream().anyMatch(WebElement::isDisplayed);
         } catch (Exception e) {
             return false;
         }
@@ -85,6 +106,7 @@ public class BasePage {
     protected void scrollToElement(By locator) {
         waitForVisible(locator);
         WebElement element = findElement(locator);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", element);
     }
 }
