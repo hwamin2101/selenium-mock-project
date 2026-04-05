@@ -28,6 +28,7 @@ public class LoginPage extends BasePage {
         sendKeys(USER_NAME, username);
         sendKeys(PASS_WORD, password);
         click(LOGIN_BTN);
+        wait.until(ExpectedConditions.urlContains("/dashboard"));
         return new NavBar(driver);
     }
 }

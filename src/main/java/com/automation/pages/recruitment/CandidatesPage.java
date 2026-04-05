@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CandidatesPage extends BasePage {
+    private static final String PAGE_PATH = "/recruitment/viewCandidates";
     private static final By PAGE_TITLE = By.xpath("//h6[normalize-space()='Recruitment']");
     private static final By ADD_BUTTON = By.xpath("//button[normalize-space()='Add']");
     private static final By SEARCH_BUTTON = By.xpath("//button[normalize-space()='Search']");
@@ -44,8 +45,10 @@ public class CandidatesPage extends BasePage {
     }
 
     public CandidatesPage waitForPage() {
+        wait.until(ExpectedConditions.urlContains(PAGE_PATH));
         wait.until(ExpectedConditions.visibilityOfElementLocated(PAGE_TITLE));
         wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_BUTTON));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[normalize-space()='Candidate Name']")));
         waitForLoaderToDisappear();
         return this;
     }
