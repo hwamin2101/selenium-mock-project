@@ -48,7 +48,8 @@ public class CandidatesPage extends BasePage {
         wait.until(ExpectedConditions.urlContains(PAGE_PATH));
         wait.until(ExpectedConditions.visibilityOfElementLocated(PAGE_TITLE));
         wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_BUTTON));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[normalize-space()='Candidate Name']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//label[normalize-space()='Candidate Name']")));
         waitForLoaderToDisappear();
         return this;
     }
