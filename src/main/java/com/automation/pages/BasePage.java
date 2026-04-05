@@ -1,6 +1,7 @@
 package com.automation.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,7 +51,12 @@ public class BasePage {
     protected void click(By locator) {
         scrollToElement(locator);
         waitForClickable(locator);
-        findElement(locator).click();
+        WebElement element = findElement(locator);
+        try {
+            element.click();
+        } catch (ElementClickInterceptedException e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        }
     }
 
     protected void sendKeys(By locator, String text) {
@@ -85,6 +91,7 @@ public class BasePage {
     protected void scrollToElement(By locator) {
         waitForVisible(locator);
         WebElement element = findElement(locator);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", element);
     }
 }

@@ -4,6 +4,7 @@ import com.automation.component.NavBar;
 import com.automation.utils.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
     private static final By USER_NAME = By.name("username");
@@ -16,6 +17,7 @@ public class LoginPage extends BasePage {
 
     public LoginPage gotoLoginPage() {
         driver.get(ConfigReader.getProperty("url"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(USER_NAME));
         return this;
     }
 
