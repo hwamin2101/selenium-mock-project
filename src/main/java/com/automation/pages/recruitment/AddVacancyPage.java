@@ -98,7 +98,8 @@ public class AddVacancyPage extends BasePage {
         });
 
         if (!findElements(HIRING_MANAGER_ERROR).isEmpty()) {
-            throw new IllegalStateException("Demo site kept Hiring Manager invalid after selecting autocomplete option: "
+            throw new IllegalStateException("Demo site kept Hiring Manager invalid after " +
+                    "selecting autocomplete option: "
                     + getText(HIRING_MANAGER_ERROR) + " (selected: " + selectedHiringManager + ")");
         }
 
